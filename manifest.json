@@ -1,0 +1,26 @@
+{
+    "name": "ANTI-WEEB v2",
+    "version": "1.0.0",
+    "manifest_version": 2,
+    
+    "description": "Having trouble stopping yourself from binging anime? You've come to the right place!",
+    "icons": {"1000": "icon2.png"},
+    
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["popup.js"]
+        }
+    ],
+    "browser_action": {
+        "default_icon":"icon2.png",
+        "browser_title": "ANTI-WEEB Extension",
+        "default_popup": "musicChoice.html"//"popup.html"
+    },
+    
+    "background": {
+        "matches": ["<all_urls>"],
+        "js": ["popup.js"]
+    },
+    "permissions": ["activeTab", "tabs", "storage"]
+}

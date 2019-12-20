@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset = "UTF-8">
+        <style>
+            body{
+                background-color: orange;
+                width: 350px;
+                height: 200px;
+            }
+            
+            #display1{
+                display: flex;
+            }
+            
+            
+            #tasks{
+                flex: (170/350)%;
+            }
+            
+            #reminders{
+                flex: (170/350)%;
+            }
+            
+            #settings{
+                flex: (10/350)%;
+                width: 42px;
+                height: 180px;
+            }
+            #settings>img:hover {
+                -webkit-transform: scale(0.8);
+                -ms-transform: scale(0.8);
+                transform: scale(0.8);
+            }
+            
+            
+            h1 {
+                font: arial;
+                padding-top: 0px;
+                text-align: left;
+                font-size: 25px;
+                font: 10px;
+                color: white;
+                height: 25px;
+            }
+                        
+            h2{
+                text-align: center;
+                font-weight: normal;
+            }
+            
+            #dothatshit{
+                display: flex;
+                justify-content: center;
+            }
+            
+        </style>
+        
+        
+        <title>ANTI-WEEB</title>
+    </head>
+    <body>
+        <h1><i>Anti-Weeb</i></h1>
+            
+        <div id="display1">
+        <div id="tasks">
+            <h2>Daily Tasks</h2>
+            
+            <ul>this is a test</ul>
+            <ul> no need to be alarmed..</ul>
+        </div>
+            
+        <div id="reminders">
+            <h2>Reminders</h2>
+            
+            <ul>dont forget to eat</ul>
+            <ul>dont forget to sleep?</ul>
+        </div>
+        
+        <div id="settings">
+            <img src = 'calendar.jpg'>
+            <img id = 'musicChoice' src = '98-989092_music-png-icon-music-symbol-transparent-png.png'>
+            <img src = "antiweebv2.jpg">
+            <img src = '85-857091_png-file-settings-icon-transparent-png.png'>
+
+            
+        </div>
+            </div>    
+            
+            
+        <p id="demo">Time has been stopped.</p>
+        
+        <div id = "dothatshit">
+        <button id="buttonTest">Test</button>
+        </div>
+        
+        <script src="popup.js" charset="utf-8"></script>
+    </body>
+</html>
