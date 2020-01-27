@@ -1,9 +1,9 @@
 {
-    "name": "ANTI-WEEB v2",
+    "name": "Music Playlist",
     "version": "1.0.0",
     "manifest_version": 2,
     
-    "description": "Having trouble stopping yourself from binging anime? You've come to the right place!",
+    "description": "Demo for music playlist",
     "icons": {"1000": "icon2.png"},
     
     "content_scripts": [
@@ -15,7 +15,7 @@
     "browser_action": {
         "default_icon":"icon2.png",
         "browser_title": "ANTI-WEEB Extension",
-        "default_popup": "musicChoice.html"//"popup.html"
+        "default_popup": "musicChoice.html"
     },
     
     "background": {

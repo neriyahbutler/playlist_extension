@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html lang = 'en'>
 <style>
+    
+    ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+    
+    ::-webkit-scrollbar-track {
+        border-radius: 10px;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+        height: 4px;
+        background: orange;
+        background-clip: padding-box;
+        -webkit-border-radius: 7px;
+    }
+    
     body{
         background-color: white;
         color: orange;
@@ -69,6 +86,7 @@
         align-content: center;
         width: 30px;
         height: 30px;
+        background: url(playbuttonv2.png);
         background-color:transparent;}    
     
     .buttonsection{
@@ -175,11 +193,11 @@
 </style>
     
     
-<body>
+<body id = "music_extension">
+    <script src = 'popup.js' id = 'script2'></script>
     <h1>Music</h1>
-    <div id = 'musicOptions'>
-        
-        <!-- The video overlay idea won't work, but for now just worry about how to add playlists. -->
+    <div id = "musicOptions">
+        <input type= "hidden" id = "flag" value = "false">
     <div id = 'playlistOverlay'>
         <div id = 'inputFrame'>
             
@@ -194,7 +212,7 @@
                 <div class = "textDiv">Playlist URL</div>
                 <input placeholder="Enter playlist url" id = "playlist_url" class = "input_text">    
             </div>
-                <input type = "submit" name = "submit" value = "Done" class = "addbtn" id = "addbtn"/>       
+                <button id = "addbtn">Done</button>  
             </form>
         </div>    
     </div>
@@ -205,13 +223,12 @@
             </div>
             <div class = 'text_info'>Umaru Playlist</div>
             <div class = "buttonsection">
-                <input type = "image" src = "playbuttonv2.png" id = "playbutton" href = "https://www.youube.com" target = "iframe_video"> 
-                <script src = 'popup.js'></script>
+                <button id = "playbutton" class = "playbutton"></button>
             </div>
         </div>
         <div class = 'musicChoice' id = 'addPlaylistButton'>
             <p id = "addPlaylist">+</p>
-            <script src = 'popup.js'></script>
+            <script src = 'popup.js' id = 'script'></script>
         </div>
     </div>
     

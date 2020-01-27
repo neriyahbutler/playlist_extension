@@ -1,29 +1,38 @@
-
-document.getElementById("playbutton").addEventListener("click", playMusic);
-
+//document.getElementById("playbutton").addEventListener("click", playMusic);
 
 function playMusic(){
-    alert("fuck");
+    alert("running");
+    
+    var bod = document.getElementsByTagName('body')[0];
+    
+    bod.insertAdjacentHTML('afterbegin', `
+        <div class = "fuck">
+            <button>test</button>
+        </div>`
+    )
 }
 
-
-document.getElementById("addPlaylist").addEventListener("click", addPlaylist);
-
-function addPlaylist(){
-    //alert("beginning of creation");
+document.getElementById("music_extension").onload = function(){
+    document.getElementById("addPlaylist").addEventListener("click", overlayDisplayON);
+    document.getElementById("addbtn").addEventListener("click", uploadData);
     
-    overlayDisplayON.call();
+    chrome.storage.sync.get(null, function(data){
+        var names = Object.keys(data);
+        var urls = Object.values(data);
+        
+        console.log(names);
+        console.log(urls);
+        
+        for (i = 0; i < names.length; i++)
+            {
+                createNewPlaylist.call(names[i], urls[i]);
+            }
+    })
     
-    createNewPlaylist.call();
-  }
+      
+}
 
-
-function createNewPlaylist()
-{
-    var addPlaylistButton = document.getElementById("addPlaylistButton").cloneNode(true);
-    
-    document.getElementById("addPlaylistButton").outerHTML = "";
-    
+function createNewPlaylist(name, url){    
     var musicChoice = document.createElement('div');
     musicChoice.className = "musicChoice";
     
@@ -35,15 +44,16 @@ function createNewPlaylist()
     
     var text_info = document.createElement('div');
     text_info.className = "text_info";
-    text_info.innerHTML = "Umaru Playlist 2";
+    text_info.innerHTML = name;
     
     var buttonsection = document.createElement('div');
     buttonsection.className = "buttonsection";
-    var inputbutton = document.createElement('input');
-    inputbutton.type = "image";
-    inputbutton.src = "playbuttonv2.png";
+    
+    var inputbutton = document.createElement('button');
     inputbutton.id = "playbutton";
-    buttonsection.appendChild(inputbutton);
+    inputbutton.className = "playbutton";
+    
+    buttonsection.appendChild(inputbutton);   
     
     musicChoice.appendChild(optionDisplay);
     musicChoice.appendChild(text_info)
@@ -51,7 +61,22 @@ function createNewPlaylist()
     
     document.getElementById('musicOptions').appendChild(musicChoice);
     
-    document.getElementById('musicOptions').appendChild(addPlaylistButton);
+    document.getElementById('musicOptions').appendChild(addPlaylistButton); 
+    
+    clickEvents.call();
+    
+}
+
+function clickEvents()
+{
+    var playbuttonArray = document.getElementsByClassName("playbutton");
+
+    for (var x = 0; x < playbuttonArray.length; x++){
+        playbuttonArray[x].onclick = function()
+        {
+            playMusic.call();
+        }
+    } 
 }
 
 function overlayDisplayON(){
@@ -62,24 +87,9 @@ function overlayDisplayOFF(){
     document.getElementById("playlistOverlay").style.display = "none";
 }
 
-var counter = Number(1);
-
-window.onload = function() {
-    chrome.storage.sync.get(null, function (data) { console.info(data) });
-    
-    document.getElementById("addbtn").onclick = function() {
+function uploadData()
+{        
         var name = String(document.getElementById("playlist_name").value);
         var url = String(document.getElementById("playlist_url").value);
-        
-        chrome.storage.sync.get([name], function(data){
-            if(typeof data.name == 'undefined')
-                {
-                    chrome.storage.sync.set({[name]: url}, function(){
-                    alert("key created");})
-                }
-            else{alert("key already exists");}
-        })
-        
-        
-    }
+        chrome.storage.sync.set({[name]: url}, function(){ });      
 }
