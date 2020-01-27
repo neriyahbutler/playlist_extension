@@ -6,7 +6,7 @@ function playMusic(){
     var bod = document.getElementsByTagName('body')[0];
     
     bod.insertAdjacentHTML('afterbegin', `
-        <div class = "fuck">
+        <div class = "testing">
             <button>test</button>
         </div>`
     )
